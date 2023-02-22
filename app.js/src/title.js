@@ -13,7 +13,7 @@ class Title extends React.Component {
       year: null,
       rated: null,
       genre: null,
-      actors: [],
+      cast: [],
       
     }
   }
@@ -33,7 +33,7 @@ class Title extends React.Component {
           year: data.Year,
           rated: data.Rated,
           genre: data.Genre,
-          actors: data.Actors,
+          cast: data.Actors,
         })
         console.log(data);
 
@@ -47,8 +47,10 @@ class Title extends React.Component {
 
     return (
       <div>
-
-        {/*<img src={image} className="App-logo" alt="movie" />*/}
+        
+        {
+          this.state.loadedMovie &&
+          <div>
         <img src={this.state.poster} alt="movie-poster"/>
         <p className="cats" id="movie-title">Title: {this.state.title}</p>
         <p className="cats">Year Released: {this.state.year}</p>
@@ -56,10 +58,17 @@ class Title extends React.Component {
         <p className="cats">Genre: {this.state.genre}</p>
         <ul className="cats">
          
-          Actors: {this.state.actors}
+          Cast: {this.state.cast}
      
         </ul>
-        <button type="button" onClick={() => this.getNewMovie()} className="button">Click for movie</button><br></br>
+          </div>
+        } 
+
+        
+
+        {/*<img src={image} className="App-logo" alt="movie" />*/}
+        
+        <button type = "button" onClick = {() => this.getNewMovie()} className="button">Click for movie</button><br></br>
       </div>
     )
   }
